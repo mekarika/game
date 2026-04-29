@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бегущий рыцарь</title>
+    <!-- Пиксельный шрифт -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="game-wrapper">
+        <!-- Главный экран -->
+        <div id="start-screen" class="screen active">
+            <h1 class="game-title">Бегущий рыцарь</h1>
+            <div class="tutorial">
+                <div class="tutorial-keys">
+                    <span class="key">↑</span>  — прыжок<br>
+                    <span class="key">Пробел</span> — пауза
+                </div>
+                <p class="tutorial-text">Собирай монеты, избегай врагов!</p>
+            </div>
+            <div class="input-group">
+                <input type="text" id="player-name" placeholder="Введи имя" maxlength="15">
+                <span class="error-msg" id="name-error"></span>
+            </div>
+            <button id="start-button" class="btn" disabled>Начать игру</button>
+        </div>
+
+        <!-- Экран игры -->
+        <div id="game-screen" class="screen">
+            <div class="game-header">
+                <div class="timer-block">
+                    <span id="timer-display">02:00</span>
+                    <button id="pause-button" class="btn small">Пауза</button>
+                </div>
+                <div class="score-block">
+                    Очки: <span id="score-display">0</span>
+                </div>
+                <div class="player-block">
+                    Игрок: <span id="player-display"></span>
+                    <span id="test-mode-badge" class="hidden">Тестовый режим</span>
+                </div>
+                <div class="ui-controls">
+                    <button id="font-inc" class="btn tiny">A+</button>
+                    <button id="font-dec" class="btn tiny">A-</button>
+                    <button id="sound-toggle" class="btn tiny" title="Вкл/выкл звук">🔊</button>
+                    <button id="exit-test" class="btn small hidden">Завершить тест</button>
+                </div>
+            </div>
+            <canvas id="game-canvas" width="1024" height="600"></canvas>
+        </div>
+
+        <!-- Экран окончания игры -->
+        <div id="end-screen" class="screen">
+            <h2>Игра окончена</h2>
+            <p>Ваш результат: <span id="final-score"></span> очков</p>
+            <p id="result-position"></p>
+            <table id="leaderboard">
+                <thead>
+                    <tr><th>Место</th><th>Имя</th><th>Очки</th></tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <button id="restart-button" class="btn">Начать игру заново</button>
+        </div>
+    </div>
+
+    <script src="js/audio.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>
